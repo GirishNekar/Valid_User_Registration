@@ -56,6 +56,21 @@ def validate_email(email):
     pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2,3})?$'
     return re.search(pattern, email)
 
+def validate_mobile_number(mobile):
+    
+    """
+    Description:
+        Checks for a valid mobile number.
+        
+    Parameter:
+        mobile : The mobile number to validate.
+        
+    Return:
+        Object: True if the mobile number is valid, False otherwise.
+    """
+    
+    pattern = r'^\d{2} \d{10}$'
+    return re.search(pattern, mobile)
 
 
 def get_input_with_validation(prompt, validation_func):
@@ -103,9 +118,14 @@ def main():
     if not last_name:
         return
     
-    email = get_input_with_validation("Enter a valid email Name: ", validate_email)
+    email = get_input_with_validation("Enter a valid email: ", validate_email)
     
-    if  email:
+    if not email:
+        return
+    
+    mobile = get_input_with_validation("Enter a valid mobile number: ", validate_mobile_number)
+
+    if  mobile:
         logger.info("Thanks For Registering")
 
 

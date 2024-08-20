@@ -7,7 +7,7 @@
 """
 
 import unittest
-from user_registration import validate_first_name,validate_last_name,validate_email
+from user_registration import validate_first_name,validate_last_name,validate_email,validate_mobile_number
 
 class TestNameValidation(unittest.TestCase):
 
@@ -40,7 +40,7 @@ class TestNameValidation(unittest.TestCase):
         Parameters:
             self
         Return:
-            Returns True for a valid name.
+            Returns True for a valid lastname.
         """
         
         ## For valid Inputs
@@ -60,7 +60,7 @@ class TestNameValidation(unittest.TestCase):
         Parameters:
             self
         Return:
-            Returns True for a valid name.
+            Returns True for a valid email.
         """
         
         ## For valid Inputs
@@ -69,6 +69,25 @@ class TestNameValidation(unittest.TestCase):
         ## For Invalid Inputs
         self.assertFalse(validate_email("naveennikgmail.com"))        
         self.assertFalse(validate_email("namveenNaika2gmailcom"))
-    
+
+    def test_valid_mobile_number(self):
+        
+        """
+        Description:
+            Checks if the mobile number is valid according to the validation criteria.
+        Parameters:
+            self
+        Return:
+            Returns True for a valid mobile Number.
+        """
+        
+        ## For valid Inputs
+        self.assertTrue(validate_mobile_number("91 8989765430"))
+        self.assertTrue(validate_mobile_number("45 8796354208"))
+        ## For Invalid Inputs
+        self.assertFalse(validate_mobile_number("918987654086"))        
+        self.assertFalse(validate_mobile_number("909090675"))
+        
+        
 if __name__ == "__main__":
     unittest.main()
