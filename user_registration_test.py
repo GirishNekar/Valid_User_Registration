@@ -98,15 +98,15 @@ class TestNameValidation(unittest.TestCase):
             self
             
         Return:
-            Returns True for a valid mobile Number.
+            Returns True for a valid password.
         """
         
         ## For valid Inputs
-        self.assertTrue(validate_password("dfAds8n9mf"))
-        self.assertTrue(validate_password("rkf9jKkApj"))
+        self.assertTrue(validate_password("dfAds8&n9mf"))
+        self.assertTrue(validate_password("rkf*9jKkApj"))
         ## For Invalid Inputs
-        self.assertFalse(validate_password("948nkf"))        
-        self.assertFalse(validate_password("847sfgdfddf"))
+        self.assertFalse(validate_password("948nkAf"))        
+        self.assertFalse(validate_password("847s(fgdfddf"))
         
         
 if __name__ == "__main__":

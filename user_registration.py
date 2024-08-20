@@ -7,6 +7,7 @@
 @Title: Validate User's First Name, Last Name, Email ,Mobile Number,Password
 """
 
+
 import re
 import mylogging as log
 
@@ -86,16 +87,29 @@ def validate_password(password):
     """
     Description:
         Checks for a valid password.
+        
     Parameter:
         password: The password to validate.
+        
     Return:
-        Object: returns Object if the password is valid, None otherwise.
+        Bool: returns True if the password is valid, False otherwise.
     """
+    
     # Rule1: Minimum 8 characters
     # Rule2: At least one uppercase letter
     # Rule3: At least one numeric digit
-    pattern = r'^(?=.*[A-Z])(?=.*\d).{8,}$'
-    return re.search(pattern, password)
+    # Rule4: Exactly one special cahracter
+    
+    pattern=r'(?=.*[A-Z])(?=.*[0-9]).{8,}'
+
+    if not re.search(pattern,password):
+        return False
+    
+    special_char_count = re.findall(r'[!@#$%^&*()_+{}\[\]:;"\'<>,.?/\\|`~]',password)
+    if not len(special_char_count)==1:
+        return False
+    
+    return True
 
 
 def get_input_with_validation(prompt, validation_func):
