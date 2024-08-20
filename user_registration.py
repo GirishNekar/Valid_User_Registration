@@ -10,7 +10,7 @@
 import re
 import mylogging as log
 
-logger = log.logger_init('UC3')
+logger = log.logger_init('UC4')
 
 def validate_first_name(first_name):
     
