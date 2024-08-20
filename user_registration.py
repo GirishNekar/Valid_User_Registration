@@ -4,13 +4,13 @@
 @Date: 2024-08-20
 @Last Modified by: Girish
 @Last Modified time: 2024-08-20
-@Title: Validate User's First Name
+@Title: Validate User's First Name and Lat Name
 """
 
 import re
 import mylogging as log
 
-logger = log.logger_init('UC1')
+logger = log.logger_init('UC2')
 
 def validate_first_name(first_name):
     
@@ -26,6 +26,20 @@ def validate_first_name(first_name):
     pattern = r'^[A-Z][A-Za-z]{2,}$'
     return re.search(pattern, first_name)
 
+def validate_last_name(last_name):
+    
+    """
+    Description: 
+        Checks for a valid last name.
+        
+    Parameter: 
+        last_name: The last name to validate.
+    Return: 
+        Object: returns Object if the last name is valid, None otherwise.
+    """
+    
+    pattern = r'^[A-Z][A-Za-z]{2,}$'
+    return re.search(pattern, last_name)
 
 
 def get_input_with_validation(prompt, validation_func):
@@ -39,7 +53,7 @@ def get_input_with_validation(prompt, validation_func):
         validation_func : The validation function to apply to the input.
         
     Return:
-        str: valid input or None if the input was not valid after 3 attempts.
+        str: returns input or None if the input was not valid after 3 attempts.
     """
     
     attempts = 0
@@ -65,8 +79,10 @@ def main():
     
     first_name = get_input_with_validation("Enter a valid First Name: ", validate_first_name)
     
-    #if not first_name :
-    #    return
+    if not first_name :
+        return
+    
+    first_name = get_input_with_validation("Enter a valid last Name: ", validate_last_name)
     
     if first_name :
         logger.info("Thanks For Registering")

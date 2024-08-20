@@ -7,7 +7,7 @@
 """
 
 import unittest
-from user_registration import validate_first_name
+from user_registration import validate_first_name,validate_last_name
 
 class TestNameValidation(unittest.TestCase):
 
@@ -29,6 +29,25 @@ class TestNameValidation(unittest.TestCase):
         ## For Invalid Inputs
         self.assertFalse(validate_first_name("Jo"), "Should be invalid due to length")        
         self.assertFalse(validate_first_name("alice"),"Should be invalid due to lowercase first letter")
+    
+    def test_valid_last_name(self):
+        
+        
+        """
+        Description:
+            Checks if the name is valid according to the validation criteria.
+        Parameters:
+            self
+        Return:
+            Returns True for a valid name.
+        """
+        
+        ## For valid Inputs
+        self.assertTrue(validate_last_name("Nekar"))
+        self.assertTrue(validate_last_name("Naik"))
+        ## For Invalid Inputs
+        self.assertFalse(validate_last_name("nek"))        
+        self.assertFalse(validate_last_name("js"))
     
 
 if __name__ == "__main__":
