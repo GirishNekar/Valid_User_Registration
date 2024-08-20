@@ -11,7 +11,7 @@
 import re
 import mylogging as log
 
-logger = log.logger_init('UC7')
+logger = log.logger_init('UC9')
 
 def validate_first_name(first_name):
     
@@ -61,7 +61,7 @@ def validate_email(email):
         Object: returns Object if the email is valid, None otherwise.
     """
     
-    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2,3})?$'
+    pattern = r'^[a-zA-Z0-9]+(?:[._%+-][a-zA-Z0-9]+)*@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})?$'
     return re.search(pattern, email)
 
 

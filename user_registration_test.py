@@ -62,13 +62,28 @@ class TestNameValidation(unittest.TestCase):
         Return:
             Returns True for a valid email.
         """
-        
-        ## For valid Inputs
-        self.assertTrue(validate_email("gmnekar76@gmil.com"))
-        self.assertTrue(validate_email("Google@gmail.co.in"))
-        ## For Invalid Inputs
-        self.assertFalse(validate_email("naveennikgmail.com"))        
-        self.assertFalse(validate_email("namveenNaika2gmailcom"))
+        self.assertTrue(validate_email('abc-100@yahoo.com'))
+        self.assertTrue(validate_email('abc.100@yahoo.com'))
+        self.assertTrue(validate_email('abc111@abc.com'))
+        self.assertTrue(validate_email('abc-100@abc.net'))
+        self.assertTrue(validate_email('abc.100@abc.com.au'))
+        self.assertTrue(validate_email('abc@1.com'))
+        self.assertTrue(validate_email('abc@gmail.com.com'))
+        self.assertTrue(validate_email('abc+100@gmail.com'))
+
+
+        self.assertFalse(validate_email('abc'))
+        self.assertFalse(validate_email('abc@.com.my'))
+        self.assertFalse(validate_email('abc123@gmail.a'))
+        self.assertFalse(validate_email('abc123@.com'))
+        self.assertFalse(validate_email('abc123@.com.com'))
+        self.assertFalse(validate_email('abc()*@gmail.com'))
+        self.assertFalse(validate_email('.abc@abc.com'))
+        self.assertFalse(validate_email('abc@%*.com'))
+        self.assertFalse(validate_email('abc..2002@gmail.com'))
+        self.assertFalse(validate_email('abc@abc@gmail.com'))
+        self.assertFalse(validate_email('abc@gmail.com.1a'))
+        self.assertFalse(validate_email('abc@gmail.com.aa.au'))
 
     def test_valid_mobile_number(self):
         
