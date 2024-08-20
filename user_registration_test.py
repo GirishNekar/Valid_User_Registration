@@ -102,11 +102,11 @@ class TestNameValidation(unittest.TestCase):
         """
         
         ## For valid Inputs
-        self.assertTrue(validate_password("dfAds^&nmf"))
-        self.assertTrue(validate_password("rkfjKkpj"))
+        self.assertTrue(validate_password("dfAds8n9mf"))
+        self.assertTrue(validate_password("rkf9jKkApj"))
         ## For Invalid Inputs
         self.assertFalse(validate_password("948nkf"))        
-        self.assertFalse(validate_password("847Ad"))
+        self.assertFalse(validate_password("847sfgdfddf"))
         
         
 if __name__ == "__main__":

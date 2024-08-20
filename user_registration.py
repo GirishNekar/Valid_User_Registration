@@ -10,7 +10,7 @@
 import re
 import mylogging as log
 
-logger = log.logger_init('UC6')
+logger = log.logger_init('UC7')
 
 def validate_first_name(first_name):
     
@@ -47,7 +47,6 @@ def validate_last_name(last_name):
     return re.search(pattern, last_name)
 
 
-
 def validate_email(email):
     
     """
@@ -64,6 +63,7 @@ def validate_email(email):
     pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2,3})?$'
     return re.search(pattern, email)
 
+
 def validate_mobile_number(mobile):
     
     """
@@ -74,11 +74,12 @@ def validate_mobile_number(mobile):
         mobile : The mobile number to validate.
         
     Return:
-        Object: True if the mobile number is valid, False otherwise.
+        Object: Object if the mobile number is valid, None otherwise.
     """
     
     pattern = r'^\d{2} \d{10}$'
     return re.search(pattern, mobile)
+
 
 def validate_password(password):
     
@@ -90,8 +91,10 @@ def validate_password(password):
     Return:
         Object: returns Object if the password is valid, None otherwise.
     """
-    
-    pattern = r'^(?=.*[A-Z]).{8,}$'
+    # Rule1: Minimum 8 characters
+    # Rule2: At least one uppercase letter
+    # Rule3: At least one numeric digit
+    pattern = r'^(?=.*[A-Z])(?=.*\d).{8,}$'
     return re.search(pattern, password)
 
 
