@@ -7,7 +7,7 @@
 """
 
 import unittest
-from user_registration import validate_first_name,validate_last_name,validate_email,validate_mobile_number
+from user_registration import validate_first_name,validate_last_name,validate_email,validate_mobile_number,validate_password
 
 class TestNameValidation(unittest.TestCase):
 
@@ -87,6 +87,26 @@ class TestNameValidation(unittest.TestCase):
         ## For Invalid Inputs
         self.assertFalse(validate_mobile_number("918987654086"))        
         self.assertFalse(validate_mobile_number("909090675"))
+
+    def test_valid_password(self):
+        
+        """
+        Description:
+            Checks if the password is valid according to the validation criteria.
+            
+        Parameters:
+            self
+            
+        Return:
+            Returns True for a valid mobile Number.
+        """
+        
+        ## For valid Inputs
+        self.assertTrue(validate_password("dfkds^&nmf"))
+        self.assertTrue(validate_password("rkfjKkpj"))
+        ## For Invalid Inputs
+        self.assertFalse(validate_password("948nkf"))        
+        self.assertFalse(validate_password("847fd"))
         
         
 if __name__ == "__main__":

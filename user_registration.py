@@ -4,21 +4,23 @@
 @Date: 2024-08-20
 @Last Modified by: Girish
 @Last Modified time: 2024-08-20
-@Title: Validate User's First Name and Lat Name
+@Title: Validate User's First Name, Last Name, Email ,Mobile Number,Password
 """
 
 import re
 import mylogging as log
 
-logger = log.logger_init('UC4')
+logger = log.logger_init('UC5')
 
 def validate_first_name(first_name):
     
     """
     Description: 
         Checks for a valid first name.
+        
     Parameter: 
         first_name: The first name to validate.
+        
     Return: 
         bool: True if the first name is valid, False otherwise.
     """
@@ -34,6 +36,7 @@ def validate_last_name(last_name):
         
     Parameter: 
         last_name: The last name to validate.
+        
     Return: 
         Object: returns Object if the last name is valid, None otherwise.
     """
@@ -49,6 +52,7 @@ def validate_email(email):
         
     Parameter: 
         email: The email to validate.
+        
     Return: 
         Object: returns Object if the email is valid, None otherwise.
     """
@@ -71,6 +75,20 @@ def validate_mobile_number(mobile):
     
     pattern = r'^\d{2} \d{10}$'
     return re.search(pattern, mobile)
+
+def validate_password(password):
+    
+    """
+    Description:
+        Checks for a valid password.
+    Parameter:
+        password: The password to validate.
+    Return:
+        Object: returns Object if the password is valid, None otherwise.
+    """
+    
+    pattern = r'^.{8,}$'
+    return re.search(pattern, password)
 
 
 def get_input_with_validation(prompt, validation_func):
@@ -125,7 +143,13 @@ def main():
     
     mobile = get_input_with_validation("Enter a valid mobile number: ", validate_mobile_number)
 
-    if  mobile:
+    if not mobile:
+        return
+    
+    password = get_input_with_validation('Enter a Valid Password:',validate_password)
+    
+    
+    if  password:
         logger.info("Thanks For Registering")
 
 
