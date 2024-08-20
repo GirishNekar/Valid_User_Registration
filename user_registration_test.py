@@ -3,7 +3,7 @@
 @Date: 2024-08-14
 @Last Modified by: Girish
 @Last Modified time: 2024-08-14
-@Title: Check for Users First name and last name is Valid or not
+@Title: Check for Users First name, Lat Name, Email , Mobile Number, Password
 """
 
 import unittest
@@ -102,11 +102,11 @@ class TestNameValidation(unittest.TestCase):
         """
         
         ## For valid Inputs
-        self.assertTrue(validate_password("dfkds^&nmf"))
+        self.assertTrue(validate_password("dfAds^&nmf"))
         self.assertTrue(validate_password("rkfjKkpj"))
         ## For Invalid Inputs
         self.assertFalse(validate_password("948nkf"))        
-        self.assertFalse(validate_password("847fd"))
+        self.assertFalse(validate_password("847Ad"))
         
         
 if __name__ == "__main__":

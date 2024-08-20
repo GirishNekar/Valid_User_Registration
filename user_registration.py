@@ -10,7 +10,7 @@
 import re
 import mylogging as log
 
-logger = log.logger_init('UC5')
+logger = log.logger_init('UC6')
 
 def validate_first_name(first_name):
     
@@ -28,6 +28,8 @@ def validate_first_name(first_name):
     pattern = r'^[A-Z][A-Za-z]{2,}$'
     return re.search(pattern, first_name)
 
+
+
 def validate_last_name(last_name):
     
     """
@@ -43,6 +45,8 @@ def validate_last_name(last_name):
     
     pattern = r'^[A-Z][A-Za-z]{2,}$'
     return re.search(pattern, last_name)
+
+
 
 def validate_email(email):
     
@@ -87,7 +91,7 @@ def validate_password(password):
         Object: returns Object if the password is valid, None otherwise.
     """
     
-    pattern = r'^.{8,}$'
+    pattern = r'^(?=.*[A-Z]).{8,}$'
     return re.search(pattern, password)
 
 
