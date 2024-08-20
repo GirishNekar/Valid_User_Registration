@@ -10,7 +10,7 @@
 import re
 import mylogging as log
 
-logger = log.logger_init('UC2')
+logger = log.logger_init('UC3')
 
 def validate_first_name(first_name):
     
@@ -40,6 +40,22 @@ def validate_last_name(last_name):
     
     pattern = r'^[A-Z][A-Za-z]{2,}$'
     return re.search(pattern, last_name)
+
+def validate_email(email):
+    
+    """
+    Description: 
+        Checks for a valid email.
+        
+    Parameter: 
+        email: The email to validate.
+    Return: 
+        Object: returns Object if the email is valid, None otherwise.
+    """
+    
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2,3})?$'
+    return re.search(pattern, email)
+
 
 
 def get_input_with_validation(prompt, validation_func):
@@ -82,10 +98,17 @@ def main():
     if not first_name :
         return
     
-    first_name = get_input_with_validation("Enter a valid last Name: ", validate_last_name)
+    last_name = get_input_with_validation("Enter a valid last Name: ", validate_last_name)
     
-    if first_name :
+    if not last_name:
+        return
+    
+    email = get_input_with_validation("Enter a valid email Name: ", validate_email)
+    
+    if  email:
         logger.info("Thanks For Registering")
+
+
 
 if __name__ == "__main__":
     main()
