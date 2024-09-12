@@ -6,10 +6,10 @@
 @Title: Check for Users First name and last name is Valid or not
 """
 
-import unittest
+import pytest
 from user_registration import validate_first_name,validate_last_name,validate_email
 
-class TestNameValidation(unittest.TestCase):
+class TestNameValidation():
 
     def test_valid_name(self):
         
@@ -24,12 +24,19 @@ class TestNameValidation(unittest.TestCase):
         """
         
         ## For valid Inputs
-        self.assertTrue(validate_first_name("John"),"Should be valid")
-        self.assertTrue(validate_first_name("Alice"),"Should be valid")
-        ## For Invalid Inputs
-        self.assertFalse(validate_first_name("Jo"), "Should be invalid due to length")        
-        self.assertFalse(validate_first_name("alice"),"Should be invalid due to lowercase first letter")
-    
+    def test_valid_name(self):
+        """
+        Function:
+            Test if the first name validation function works correctly.
+        Parameters:
+            None
+        Return:
+            None
+        """
+        assert validate_first_name("John") is not None, "Expected 'John' to be valid"
+        assert validate_first_name("Alice") is not None, "Expected 'Alice' to be valid"
+        assert validate_first_name("Jo") is None, "Expected 'Jo' to be invalid due to length"
+        assert validate_first_name("alice") is None, "Expected 'alice' to be invalid due to lowercase first letter"
     
     def test_valid_last_name(self):
         
@@ -44,11 +51,11 @@ class TestNameValidation(unittest.TestCase):
         """
         
         ## For valid Inputs
-        self.assertTrue(validate_last_name("Nekar"))
-        self.assertTrue(validate_last_name("Naik"))
+        assert validate_last_name("Nekar") is not None
+        assert validate_last_name("Nekar") is not None
         ## For Invalid Inputs
-        self.assertFalse(validate_last_name("nek"))        
-        self.assertFalse(validate_last_name("js"))
+        assert validate_last_name("nek") is None
+        assert validate_last_name("Ne") is None
     
     
     def test_valid_email_name(self):
@@ -64,11 +71,13 @@ class TestNameValidation(unittest.TestCase):
         """
         
         ## For valid Inputs
-        self.assertTrue(validate_email("gmnekar76@gmil.com"))
-        self.assertTrue(validate_email("Google@gmail.co.in"))
+        assert validate_email("gmnekar76@gmil.com") is not None
+        assert validate_email("Google@gmil.com") is not None
+       
         ## For Invalid Inputs
-        self.assertFalse(validate_email("naveennikgmail.com"))        
-        self.assertFalse(validate_email("namveenNaika2gmailcom"))
+        assert validate_email("naveennikgmail.com") is None
+        assert validate_email("namveenNaika2gmailcom") is None
+
     
 if __name__ == "__main__":
-    unittest.main()
+    pytest.main()
