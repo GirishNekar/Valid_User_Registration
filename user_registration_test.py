@@ -110,8 +110,8 @@ class TestNameValidation():
         """
         
         ## For valid Inputs
-        assert validate_password("dfkds^&nmf") is not None
-        assert validate_password("rkfjKkpj") is not None
+        assert validate_password("dfRkds^&nmf") is not None
+        assert validate_password("rkLfjKkpj") is not None
         ## For Invalid Inputs
         assert validate_password("948nkf") is None       
         assert validate_password("847fd") is None
