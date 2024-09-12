@@ -6,10 +6,10 @@
 @Title: Check for Users First name and last name is Valid or not
 """
 
-import unittest
+import pytest
 from user_registration import validate_first_name,validate_last_name,validate_email,validate_mobile_number
 
-class TestNameValidation(unittest.TestCase):
+class TestNameValidation():
 
     def test_valid_name(self):
         
@@ -98,4 +98,4 @@ class TestNameValidation(unittest.TestCase):
         
         
 if __name__ == "__main__":
-    unittest.main()
+    pytest.main()
